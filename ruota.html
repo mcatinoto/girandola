@@ -80,9 +80,9 @@
         button.addEventListener('click', () => {
             if (button.textContent === '3') {
                 // Apri il sito Wikipedia se il pulsante è il numero 3
-                window.open('https://www.wikipedia.org/', '_blank');
+                window.location.href = 'https://www.wikipedia.org/';
             } else {
-                alert(`Hai cliccato sul pulsante ${button.textContent}`);
+                 window.location.href = 'https://www.google.com/';
             }
         });
     });
