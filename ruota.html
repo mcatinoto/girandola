@@ -80,9 +80,11 @@
         button.addEventListener('click', () => {
             if (button.textContent === '3') {
                 // Apri il sito Wikipedia se il pulsante è il numero 3
-                window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
+                //window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
+                window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
             } else if(button.textContent === '1'){
-                 window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
+                 //window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
+                window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
                 
             }
         });
