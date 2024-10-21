@@ -54,32 +54,39 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const wheel = document.querySelector('.wheel');
-            const buttons = wheel.querySelectorAll('.button');
-            const radius = 120;
-            const angleStep = (2 * Math.PI) / buttons.length;
+    const wheel = document.querySelector('.wheel');
+    const buttons = wheel.querySelectorAll('.button');
+    const radius = 120;
+    const angleStep = (2 * Math.PI) / buttons.length;
 
-            buttons.forEach((button, index) => {
-                const angle = index * angleStep;
-                const x = radius * Math.cos(angle);
-                const y = radius * Math.sin(angle);
-                button.style.transform = `translate(${x}px, ${y}px)`;
-            });
+    buttons.forEach((button, index) => {
+        const angle = index * angleStep;
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+        button.style.transform = `translate(${x}px, ${y}px)`;
+    });
 
-            wheel.addEventListener('mouseenter', () => {
-                wheel.style.animationPlayState = 'paused';
-            });
+    // Gestione pausa della rotazione al passaggio del mouse
+    wheel.addEventListener('mouseenter', () => {
+        wheel.style.animationPlayState = 'paused';
+    });
 
-            wheel.addEventListener('mouseleave', () => {
-                wheel.style.animationPlayState = 'running';
-            });
+    wheel.addEventListener('mouseleave', () => {
+        wheel.style.animationPlayState = 'running';
+    });
 
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    alert(`Hai cliccato sul pulsante ${button.textContent}`);
-                });
-            });
+    // Gestione clic sui pulsanti
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.textContent === '3') {
+                // Apri il sito Wikipedia se il pulsante è il numero 3
+                window.open('https://www.wikipedia.org/', '_blank');
+            } else {
+                alert(`Hai cliccato sul pulsante ${button.textContent}`);
+            }
         });
+    });
+});
     </script>
 </body>
 </html>
