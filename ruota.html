@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruota dei Pulsanti</title>
+    <style>
+        .wheel {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button.highlighted {
+            box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wheel">
+        <div class="button" style="background-color: red;">1</div>
+        <div class="button" style="background-color: blue;">2</div>
+        <div class="button" style="background-color: green;">3</div>
+        <div class="button highlighted" style="background-color: yellow;">4</div>
+        <div class="button highlighted" style="background-color: purple;">5</div>
+        <div class="button highlighted" style="background-color: orange;">6</div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const wheel = document.querySelector('.wheel');
+            const buttons = wheel.querySelectorAll('.button');
+            const radius = 120;
+            const angleStep = (2 * Math.PI) / buttons.length;
+
+            buttons.forEach((button, index) => {
+                const angle = index * angleStep;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+                button.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            wheel.addEventListener('mouseenter', () => {
+                wheel.style.animationPlayState = 'paused';
+            });
+
+            wheel.addEventListener('mouseleave', () => {
+                wheel.style.animationPlayState = 'running';
+            });
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    alert(`Hai cliccato sul pulsante ${button.textContent}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
