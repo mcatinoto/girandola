@@ -26,7 +26,6 @@
             color: white;
             cursor: pointer;
             border-radius: 10px; /* Angoli arrotondati */
-            transition: transform 0.2s; /* Aggiunta di una transizione */
         }
 
         .button.highlighted {
@@ -59,13 +58,13 @@
             const buttons = wheel.querySelectorAll('.button');
             const radius = 120;
             const angleStep = (2 * Math.PI) / buttons.length;
-            let currentAngle = 0;
 
             buttons.forEach((button, index) => {
                 const angle = index * angleStep;
                 const x = radius * Math.cos(angle);
                 const y = radius * Math.sin(angle);
-                button.style.transform = `translate(${x}px, ${y}px) rotate(${angle + Math.PI / 2}rad)`; // Ruota i pulsanti
+                // Rimuovi la rotazione aggiuntiva dai pulsanti
+                button.style.transform = `translate(${x}px, ${y}px)`; // Non ruotare i pulsanti
             });
 
             // Gestione pausa della rotazione al passaggio del mouse
