@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruota dei Pulsanti</title>
+    <title>Ruota dei Capoluoghi di Sicilia</title>
     <style>
         .wheel {
             position: relative;
@@ -18,14 +18,15 @@
 
         .button {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 80px;  /* Larghezza del rettangolo */
+            height: 40px; /* Altezza del rettangolo */
             text-align: center;
-            line-height: 60px;
-            font-size: 18px;
+            line-height: 40px;
+            font-size: 16px;
             color: white;
             cursor: pointer;
+            border-radius: 10px; /* Angoli arrotondati */
+            transition: transform 0.2s; /* Aggiunta di una transizione */
         }
 
         .button.highlighted {
@@ -44,52 +45,49 @@
 </head>
 <body>
     <div class="wheel">
-        <div class="button" style="background-color: red;">1</div>
-        <div class="button" style="background-color: blue;">2</div>
-        <div class="button" style="background-color: green;">3</div>
-        <div class="button highlighted" style="background-color: yellow;">4</div>
-        <div class="button highlighted" style="background-color: purple;">5</div>
-        <div class="button highlighted" style="background-color: orange;">6</div>
+        <div class="button" style="background-color: red;">Palermo</div>
+        <div class="button" style="background-color: blue;">Catania</div>
+        <div class="button" style="background-color: green;">Messina</div>
+        <div class="button highlighted" style="background-color: yellow;">Siracusa</div>
+        <div class="button highlighted" style="background-color: purple;">Trapani</div>
+        <div class="button highlighted" style="background-color: orange;">Agrigento</div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-    const wheel = document.querySelector('.wheel');
-    const buttons = wheel.querySelectorAll('.button');
-    const radius = 120;
-    const angleStep = (2 * Math.PI) / buttons.length;
+            const wheel = document.querySelector('.wheel');
+            const buttons = wheel.querySelectorAll('.button');
+            const radius = 120;
+            const angleStep = (2 * Math.PI) / buttons.length;
 
-    buttons.forEach((button, index) => {
-        const angle = index * angleStep;
-        const x = radius * Math.cos(angle);
-        const y = radius * Math.sin(angle);
-        button.style.transform = `translate(${x}px, ${y}px)`;
-    });
+            buttons.forEach((button, index) => {
+                const angle = index * angleStep;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+                button.style.transform = `translate(${x}px, ${y}px)`;
+            });
 
-    // Gestione pausa della rotazione al passaggio del mouse
-    wheel.addEventListener('mouseenter', () => {
-        wheel.style.animationPlayState = 'paused';
-    });
+            // Gestione pausa della rotazione al passaggio del mouse
+            wheel.addEventListener('mouseenter', () => {
+                wheel.style.animationPlayState = 'paused';
+            });
 
-    wheel.addEventListener('mouseleave', () => {
-        wheel.style.animationPlayState = 'running';
-    });
+            wheel.addEventListener('mouseleave', () => {
+                wheel.style.animationPlayState = 'running';
+            });
 
-    // Gestione clic sui pulsanti
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (button.textContent === '3') {
-                // Apri il sito Wikipedia se il pulsante è il numero 3
-                //window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
-                window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
-            } else if(button.textContent === '1'){
-                 //window.location.href = 'https://sites.google.com/view/testgirandola/sezioni/wiki';   // Apre nella stessa pagina
-                window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
-                
-            }
+            // Gestione clic sui pulsanti
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.textContent === 'Palermo') {
+                        window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
+                    } else if (button.textContent === 'Catania') {
+                        window.open('https://sites.google.com/view/testgirandola/sezioni/wiki', '_blank');
+                    }
+                    // Aggiungi ulteriori condizioni per altri capoluoghi se necessario
+                });
+            });
         });
-    });
-});
     </script>
 </body>
 </html>
