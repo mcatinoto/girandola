@@ -33,6 +33,13 @@
             box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.8);
         }
 
+        .center-image {
+            position: absolute;
+            width: 100px; /* Dimensione dell'immagine */
+            height: auto; /* Mantiene le proporzioni */
+            z-index: 1; /* Assicura che l'immagine sia sopra i pulsanti */
+        }
+
         @keyframes spin {
             from {
                 transform: rotate(0deg);
@@ -45,6 +52,7 @@
 </head>
 <body>
     <div class="wheel">
+        <img src="https://via.placeholder.com/100" alt="Immagine centrale" class="center-image"> <!-- Immagine al centro -->
         <div class="button" style="background-color: red;">Palermo</div>
         <div class="button" style="background-color: blue;">Catania</div>
         <div class="button" style="background-color: green;">Messina</div>
@@ -59,13 +67,13 @@
             const buttons = wheel.querySelectorAll('.button');
             const radius = 120;
             const angleStep = (2 * Math.PI) / buttons.length;
-            let currentAngle = 0;
 
             buttons.forEach((button, index) => {
                 const angle = index * angleStep;
                 const x = radius * Math.cos(angle);
                 const y = radius * Math.sin(angle);
-                button.style.transform = `translate(${x}px, ${y}px) rotate(${angle + Math.PI / 2}rad)`; // Ruota i pulsanti
+                // Ruota i pulsanti in modo che rimangano perpendicolari
+                button.style.transform = `translate(${x}px, ${y}px) rotate(${angle + Math.PI / 2}rad)`;
             });
 
             // Gestione pausa della rotazione al passaggio del mouse
